@@ -1,0 +1,21 @@
+--test to make sure import of data worked
+SELECT * FROM BIT_DB.Spotifydata;
+--What is the average danceability by artist from highest to lowest?
+SELECT artist_name, AVG(danceability) FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+ORDER BY AVG(danceability) desc;
+--Who are the top 10 artists based on popularity? 
+SELECT artist_name, AVG(popularity) FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+ORDER BY AVG(popularity) desc
+LIMIT 10;
+--What artist released the longest song?
+SELECT artist_name, track_name, MAX(duration_ms) FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+ORDER BY MAX(duration_ms) DESC
+LIMIT 1
+;
+--What's the average danceability for the 10 most popular songs? 
+SELECT popularity, danceability, track_name, artist_name FROM BIT_DB.Spotifydata
+ORDER BY popularity DESC
+limit 10;
